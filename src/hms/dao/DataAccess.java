@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 public final class DataAccess {
     
     private final String URL = "jdbc:mysql://localhost:3306/";
-    private final String DB_NAME = "oop-design-two";
+    private final String DB_NAME = "hms";
     private final String DRIVER = "com.mysql.jdbc.Driver";
     private final String USERNAME = "root";
     private final String PASSWORD = "";

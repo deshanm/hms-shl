@@ -5,6 +5,9 @@
  */
 package hms.forms;
 
+import hms.dao.PatientAccess;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Deshan
@@ -40,7 +43,7 @@ public class AddPatientForm extends javax.swing.JFrame {
         lastNameTxt = new javax.swing.JTextField();
         ageTxt = new javax.swing.JTextField();
         contactTxt = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox();
+        genderCombo = new javax.swing.JComboBox();
         addBtn = new javax.swing.JButton();
         clearBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -59,7 +62,12 @@ public class AddPatientForm extends javax.swing.JFrame {
 
         jLabel7.setText("Contact");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        genderCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "male", "female" }));
+        genderCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                genderComboActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -91,7 +99,7 @@ public class AddPatientForm extends javax.swing.JFrame {
                         .addGap(80, 80, 80)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(contactTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(genderCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -116,7 +124,7 @@ public class AddPatientForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(genderCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -197,12 +205,29 @@ public class AddPatientForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        // TODO add your handling code here:
+        int id = Integer.parseInt(idTxt.getText());
+        String firstName = firstNameTxt.getText();
+        String lastName = lastNameTxt.getText();
+        int age = Integer.parseInt(ageTxt.getText());
+        String contact = contactTxt.getText();
+        
+        PatientAccess pa = new PatientAccess();
+        boolean addPatient = pa.addPatient(id, firstName, lastName, age, contact);
+        String message = "Added Sucessfully";
+        if(addPatient){
+            message = "cannot add";
+        }
+        JOptionPane.showMessageDialog(this, message);
+        
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_clearBtnActionPerformed
+
+    private void genderComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_genderComboActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,8 +270,8 @@ public class AddPatientForm extends javax.swing.JFrame {
     private javax.swing.JButton clearBtn;
     private javax.swing.JTextField contactTxt;
     private javax.swing.JTextField firstNameTxt;
+    private javax.swing.JComboBox genderCombo;
     private javax.swing.JTextField idTxt;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
