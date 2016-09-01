@@ -62,7 +62,7 @@ public class AddPatientForm extends javax.swing.JFrame {
 
         jLabel7.setText("Contact");
 
-        genderCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "male", "female" }));
+        genderCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Female" }));
         genderCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 genderComboActionPerformed(evt);
@@ -77,29 +77,25 @@ public class AddPatientForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(70, 70, 70)
-                        .addComponent(idTxt))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(67, 67, 67)
-                        .addComponent(firstNameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(68, 68, 68)
-                        .addComponent(lastNameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(99, 99, 99)
-                        .addComponent(ageTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(jLabel6))
                         .addGap(80, 80, 80)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(contactTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                            .addComponent(genderCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(contactTxt)
+                            .addComponent(genderCombo, 0, 121, Short.MAX_VALUE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(67, 67, 67)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lastNameTxt)
+                            .addComponent(idTxt)
+                            .addComponent(firstNameTxt)
+                            .addComponent(ageTxt))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -172,6 +168,7 @@ public class AddPatientForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
                         .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -205,24 +202,54 @@ public class AddPatientForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        int id = Integer.parseInt(idTxt.getText());
-        String firstName = firstNameTxt.getText();
-        String lastName = lastNameTxt.getText();
-        int age = Integer.parseInt(ageTxt.getText());
-        String contact = contactTxt.getText();
-        
-        PatientAccess pa = new PatientAccess();
-        boolean addPatient = pa.addPatient(id, firstName, lastName, age, contact);
-        String message = "Added Sucessfully";
-        if(!addPatient){
-            message = "cannot add";
+
+        if (idTxt.getText() == null || idTxt.getText().equals("")) {
+
+            JOptionPane.showMessageDialog(this, "Please enter patient ID !");
+
+        } else if (firstNameTxt.getText() == null || firstNameTxt.getText().equals("")) {
+
+            JOptionPane.showMessageDialog(this, "Please enter patient first name !");
+
+        } else if (lastNameTxt.getText() == null || lastNameTxt.getText().equals("")) {
+
+            JOptionPane.showMessageDialog(this, "Please enter patient last name !");
+
+        } else if (ageTxt.getText() == null || ageTxt.getText().equals("")) {
+
+            JOptionPane.showMessageDialog(this, "Please enter patient age !");
+
+        } else if (contactTxt.getText() == null || contactTxt.getText().equals("")) {
+
+            JOptionPane.showMessageDialog(this, "Please enter patient contact number !");
+
+        } else {
+
+            int id = Integer.parseInt(idTxt.getText());
+            String firstName = firstNameTxt.getText();
+            String lastName = lastNameTxt.getText();
+            int age = Integer.parseInt(ageTxt.getText());
+            String contact = contactTxt.getText();
+
+            PatientAccess pa = new PatientAccess();
+            boolean addPatient = pa.addPatient(id, firstName, lastName, age, contact);
+            String message = "Added Sucessfully";
+
+            if (!addPatient) {
+                message = "cannot add";
+            }
+
+            JOptionPane.showMessageDialog(this, message);
         }
-        JOptionPane.showMessageDialog(this, message);
-        
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
-        // TODO add your handling code here:
+
+        idTxt.setText(null);
+        firstNameTxt.setText(null);
+        lastNameTxt.setText(null);
+        ageTxt.setText(null);
+        contactTxt.setText(null);
     }//GEN-LAST:event_clearBtnActionPerformed
 
     private void genderComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderComboActionPerformed
