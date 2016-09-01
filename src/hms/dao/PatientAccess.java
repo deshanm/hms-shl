@@ -11,6 +11,7 @@ package hms.dao;
  */
 public class PatientAccess {
     public boolean addPatient(int id, String firstName, String lastName, int age, String contact){
-        return false;
+        String query = "INSERT INTO opd_patient VALUES(null,'"+firstName+"','"+lastName+"','"+contact+"',"+age+")";
+        return DataAccess.getDbCon().exceuteU(query) == 1;
     }
 }

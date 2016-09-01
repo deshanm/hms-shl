@@ -214,7 +214,7 @@ public class AddPatientForm extends javax.swing.JFrame {
         PatientAccess pa = new PatientAccess();
         boolean addPatient = pa.addPatient(id, firstName, lastName, age, contact);
         String message = "Added Sucessfully";
-        if(addPatient){
+        if(!addPatient){
             message = "cannot add";
         }
         JOptionPane.showMessageDialog(this, message);
