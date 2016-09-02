@@ -50,6 +50,7 @@ public class ZumbaMemeberDetailsForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setText("Add Zumba member Details");
 
         jLabel2.setText("Member ID");
@@ -81,34 +82,21 @@ public class ZumbaMemeberDetailsForm extends javax.swing.JFrame {
             .addGroup(memberTxtLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(memberTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(memberTxtLayout.createSequentialGroup()
-                        .addGroup(memberTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addGroup(memberTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(daoTxt)
-                            .addComponent(memberID)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, memberTxtLayout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(contactTxt))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, memberTxtLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                        .addComponent(addressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, memberTxtLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(memberTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, memberTxtLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(14, 14, 14)
-                        .addComponent(genderTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, memberTxtLayout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(dobTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
+                .addGap(18, 18, 18)
+                .addGroup(memberTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(contactTxt, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(daoTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                    .addComponent(memberID, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addressTxt)
+                    .addComponent(genderTxt, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dobTxt, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(0, 25, Short.MAX_VALUE))
         );
         memberTxtLayout.setVerticalGroup(
             memberTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,10 +125,15 @@ public class ZumbaMemeberDetailsForm extends javax.swing.JFrame {
                 .addGroup(memberTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dobTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         clearBtn.setText("Clear");
+        clearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearBtnActionPerformed(evt);
+            }
+        });
 
         addBtn.setText("Add");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -154,34 +147,33 @@ public class ZumbaMemeberDetailsForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(memberTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(memberTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
-                            .addComponent(clearBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(addBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(clearBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(14, 14, 14))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(125, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(125, 125, 125))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
+                        .addGap(52, 52, 52)
                         .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
+                        .addGap(18, 18, 18)
                         .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(35, 35, 35)
                         .addComponent(memberTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pack();
@@ -192,20 +184,68 @@ public class ZumbaMemeberDetailsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_contactTxtActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        String memberId = memberID.getText();
-        String dao = daoTxt.getText();
-        String contact = contactTxt.getText();
-        String gender = genderTxt.getText();
-        String address = addressTxt.getText();
-        String dob = dobTxt.getText();
-        ZumbaAccess pa = new ZumbaAccess();
-        boolean addPatient = pa.addZumbaMember(memberId, dao, contact, address, gender, dob);
-        String message = "Added Sucessfully";
-        if(!addPatient){
-            message = "cannot add";
+
+        if (memberID.getText() == null || memberID.getText().equals("")) {
+
+            JOptionPane.showMessageDialog(this, "Please enter Member ID !");
+
+        } else if (daoTxt.getText() == null || daoTxt.getText().equals("")) {
+
+            JOptionPane.showMessageDialog(this, "Please enter DOA !");
+
+        } else if (contactTxt.getText() == null || contactTxt.getText().equals("")) {
+
+            JOptionPane.showMessageDialog(this, "Please enter member contact number !");
+
+        } else if (genderTxt.getText() == null || genderTxt.getText().equals("")) {
+
+            JOptionPane.showMessageDialog(this, "Please enter mamber gender !");
+
+        } else if (addressTxt.getText() == null || addressTxt.getText().equals("")) {
+
+            JOptionPane.showMessageDialog(this, "Please enter member address !");
+
+        } else if (dobTxt.getText() == null || dobTxt.getText().equals("")) {
+
+            JOptionPane.showMessageDialog(this, "Please enter member date of birth !");
+
+        }else if (!(memberID.getText().matches("[0-9]+"))){
+            
+            JOptionPane.showMessageDialog(this, "Please enter numbers for id !");
+            
+        }else {
+
+            String memberId = memberID.getText();
+            String dao = daoTxt.getText();
+            String contact = contactTxt.getText();
+            String gender = genderTxt.getText();
+            String address = addressTxt.getText();
+            String dob = dobTxt.getText();
+
+            ZumbaAccess pa = new ZumbaAccess();
+            boolean addPatient = pa.addZumbaMember(memberId, dao, contact, address, gender, dob);
+            
+            String message = "Added Sucessfully";
+            
+            if (!addPatient) {
+                message = "cannot add";
+            }
+            
+            JOptionPane.showMessageDialog(this, message);
+
         }
-        JOptionPane.showMessageDialog(this, message);
     }//GEN-LAST:event_addBtnActionPerformed
+
+    private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
+
+        memberID.setText(null);
+        daoTxt.setText(null);
+        contactTxt.setText(null);
+        genderTxt.setText(null);
+        addressTxt.setText(null);
+        dobTxt.setText(null);
+        
+    }//GEN-LAST:event_clearBtnActionPerformed
 
     /**
      * @param args the command line arguments
